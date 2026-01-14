@@ -90,12 +90,17 @@ static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {"dmenu_run", NULL};
 static const char *termcmd[] = {"wezterm", NULL};
+static const char *changeWall[] = {"sh", "-c", "~/scripts/random.sh", NULL};
+static const char *screensh[] = {
+    "sh", "-c", "scrot -s - | xclip -selection clipboard -t image/png", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
     {MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_F5, xrdb, {.v = NULL}},
+    {MODKEY | ShiftMask, XK_s, spawn, {.v = screensh}},
+    {MODKEY, XK_c, spawn, {.v = changeWall}},
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
