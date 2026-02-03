@@ -40,8 +40,9 @@ static const Rule rules[] = {
      *	WM_NAME(STRING) = title
      */
     /* class      instance    title       tags mask     isfloating   monitor */
-    {"Gimp", NULL, NULL, 0, 1, -1},
-    {"Firefox", NULL, NULL, 1 << 8, 0, -1},
+    /* class      instance    title       tags mask     iscentered   isfloating
+        monitor */
+    {"firefox", NULL, NULL, 1 << 0, 0, 0, -1},
 };
 
 /* layout(s) */
@@ -82,7 +83,7 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd)                                                             \
   {                                                                            \
-    .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL }                       \
+    .v = (const char *[]) { "/bin/zsh", "-c", cmd, NULL }                      \
   }
 
 /* commands */
